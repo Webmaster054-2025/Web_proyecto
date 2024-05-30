@@ -33,13 +33,14 @@ router.post('/new',upload.single('imagen'), (req, res) => {
   const imagenUrl=""
   if (req.file) {
   const imagenUrl = req.file.path.replace('public',''); // Ruta de la imagen en el servidor
-  
-}
-const query = 'INSERT INTO productos (nombre, descripcion, precio,imagen,categoria) VALUES (?, ?, ?, ?,?)';
+  const query = 'INSERT INTO productos (nombre, descripcion, precio,imagen,categoria) VALUES (?, ?, ?, ?,?)';
   db.query(query, [nombre, descripcion, precio, imagenUrl,categoria], (err, results) => {
     if (err) throw err;
     res.redirect('/productsAdmin');
   });
+  
+}
+
 
 });
 // Formulario para editar un producto
